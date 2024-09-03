@@ -30,7 +30,7 @@ public class TransferenciaController {
         }
     }
 
-    /*@GET
+    @GET
     @Path("/{codigoUnicoTransaccion}")
     public Response obtenerTransferencia(@PathParam("codigoUnicoTransaccion") String codigoUnicoTransaccion) {
         Transferencia transferencia = transferenciaService.obtenerTransferencia(codigoUnicoTransaccion);
@@ -41,5 +41,4 @@ public class TransferenciaController {
         }
     }
 
-     */
 }
