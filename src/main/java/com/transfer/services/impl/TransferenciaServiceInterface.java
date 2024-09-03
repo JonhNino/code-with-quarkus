@@ -3,7 +3,7 @@ package com.transfer.services.impl;
 
 import com.transfer.model.Transferencia;
 
-public interface LoaderCacheService {
+public interface TransferenciaServiceInterface  {
 
     void guardarTransferencia(Transferencia key);
 
