@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message Transferencia {
+  string tipoOperacion = 1;
+  string codigoTransaccion = 2;
+  string cuentaContable = 3;
+  string descripcion1 = 4;
+  string descripcion2 = 5;
+  string descripcion3 = 6;
+  string canal = 7;
+  string moneda = 8;
+  string tipoCuentaOrigen = 9;
+  string tipoCuentaDestino = 10;
+  string codigoUnicoTransaccion = 11;
+}
