@@ -22,7 +22,7 @@ import static io.quarkus.arc.ComponentsProvider.LOG;
 public class TransferenciaService implements TransferenciaServiceInterface {
 
     @Inject
-    @Remote("transferencias")
+    @Remote("TRANSFER_PARAMETERS")
     RemoteCache<String, String> cache;
 
     @Inject
