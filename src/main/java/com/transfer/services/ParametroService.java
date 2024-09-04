@@ -37,7 +37,7 @@ public class ParametroService {
             try {
                 processParametro(parametro);
             } catch (Exception e) {
-                LOG.error("Error procesando parámetro: " + parametro.tipoOperacion, e);
+                LOG.error(" Error procesando parámetro: " + parametro.tipoOperacion, e);
             }
         }
         LOG.info("Procesamiento de parámetros completado");
