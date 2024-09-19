@@ -13,10 +13,18 @@ public class ParametrosCronService {
     @Inject
     ParametroService parametroService;
 
+    @Inject
+    CanalService canalService;
+
+    @Inject
+    CommissionCodesService commissionCodesService;
+
     @Scheduled(cron = "30 * * * * ?")
     void ejecutarTareaProgramada() {
         LOG.info("Ejecutando tarea programada cada 2 minutos con 30 segundos");
         procesarParametros();
+        procesarCanales();
+        procesarCommissionCodes();
     }
 
     private void procesarParametros() {
@@ -26,6 +34,26 @@ public class ParametrosCronService {
             LOG.info("Procesamiento de parámetros completado exitosamente desde el cron job.");
         } catch (Exception e) {
             LOG.error("Error durante el procesamiento de parámetros en el cron job", e);
+        }
+    }
+
+    private void procesarCanales() {
+        LOG.info("Iniciando procesamiento de canales desde el cron job...");
+        try {
+            canalService.processCanales();
+            LOG.info("Procesamiento de canales completado exitosamente desde el cron job.");
+        } catch (Exception e) {
+            LOG.error("Error durante el procesamiento de canales en el cron job", e);
+        }
+    }
+
+    private void procesarCommissionCodes() {
+        LOG.info("Iniciando procesamiento de CommissionCodes desde el cron job...");
+        try {
+            commissionCodesService.processCommissionCodes();
+            LOG.info("Procesamiento de CommissionCodes completado exitosamente desde el cron job.");
+        } catch (Exception e) {
+            LOG.error("Error durante el procesamiento de canales en el cron job", e);
         }
     }
 }

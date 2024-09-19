@@ -33,36 +33,34 @@ public class ParametroService {
         List<Parametro> parametros = parametroRepository.listAll();
         LOG.info("Número total de registros encontrados: " + parametros.size());
 
-        for (Parametro parametro : parametros) {
+      /*  for (Parametro parametro : parametros) {
             try {
                 processParametro(parametro);
             } catch (Exception e) {
                 LOG.error(" Error procesando parámetro: " + parametro.tipoOperacion, e);
             }
         }
+
+       */
         LOG.info("Procesamiento de parámetros completado");
     }
 
-    private void processParametro(Parametro parametro) {
-        LOG.info("Procesando parámetro: " + parametro.tipoOperacion);
+  /*  private void processParametro(Parametro parametro) {
+        LOG.info("Procesando parámetro: " + parametro.operationType);
 
         if (!validarParametrosComunes(parametro)) {
-            LOG.error("Parámetros inválidos para: " + parametro.tipoOperacion);
+            LOG.error("Parámetros inválidos para: " + parametro.operationType);
             return;
         }
 
         Transferencia transferencia = new Transferencia(
-                parametro.tipoOperacion,
-                parametro.codigoTransaccion,
-                parametro.cuentaContable,
-                parametro.descripcion1,
-                parametro.descripcion2,
-                parametro.descripcion3,
-                parametro.canal,
-                parametro.moneda,
-                parametro.tipoCuentaOrigen,
-                parametro.tipoCuentaDestino,
-                generarCodigoUnicoTransaccion()
+                parametro.operationType,
+                parametro.transactionCode,
+                parametro.accountingAccount,
+                parametro.descriptions.description1,
+                parametro.descriptions.description2,
+                parametro.descriptions.description3
+
         );
 
         switch (parametro.tipoOperacion) {
@@ -88,12 +86,16 @@ public class ParametroService {
         guardarEnDataGrid(transferencia);
     }
 
-    private boolean validarParametrosComunes(Parametro parametro) {
+   */
+
+  /*  private boolean validarParametrosComunes(Parametro parametro) {
         return CANALES_VALIDOS.contains(parametro.canal) &&
                 MONEDAS_VALIDAS.contains(parametro.moneda) &&
                 TIPOS_CUENTA_ORIGEN.contains(parametro.tipoCuentaOrigen) &&
                 TIPO_CUENTA_DESTINO.equals(parametro.tipoCuentaDestino);
     }
+
+   */
     private Transferencia processLBTR(Transferencia transferencia) {
         if (transferencia.descripcion1().startsWith("TRAN\\")) {
             String beneficiario = transferencia.descripcion1().substring(5);
